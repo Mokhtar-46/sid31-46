@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Currency App</title>{% endblock %}
+
+{% block content %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <h1>MRU rates vs {{currency}}</h1>
+    <h2></h2>
+    
+    <canvas id="myChart" width="800" height="400">
+
+    </canvas>
+
+    <canvas id="myChart2" width="300" height="300">
+
+    </canvas>
+
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels : [{% for item in labels %} "{{ item }}", {% endfor %}],
+                datasets: [{
+                  label: "{{currency}}",
+                  data : [{% for item in values %} {{ item }}, {% endfor %}],
+                }]
+            }
+        });
+
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        const myChart2 = new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels : [{% for item in labels_2 %} "{{ item }}", {% endfor %}],
+                datasets: [{
+                  label: "My Dognut",
+                  data : [{% for item in values_2 %} {{ item }}, {% endfor %}],
+                }]
+            }
+        });
+    </script>
+
+    
+{% endblock %}
