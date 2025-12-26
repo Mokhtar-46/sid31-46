@@ -8,6 +8,6 @@ services:
       python manage.py runserver 0.0.0.0:8000
       "
     ports:
-      - "127.0.0.1:28000:8000"
+      - "127.0.0.1:1046:8000"
     volumes:
       - ./config:/app
