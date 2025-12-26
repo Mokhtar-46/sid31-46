@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    container_name: mru_fx_web
+    command: >
+      sh -c "
+      python manage.py makemigrations && python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000
+      "
+    ports:
+      - "127.0.0.1:28000:8000"
+    volumes:
+      - ./config:/app
