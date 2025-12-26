@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    container_name: mru_fx_web
+    container_name: web-46
     command: >
       sh -c "
       python manage.py makemigrations && python manage.py migrate &&
